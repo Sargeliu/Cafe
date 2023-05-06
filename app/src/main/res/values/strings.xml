@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Cafe</string>
+    <string name="welcome">Добро пожаловать!</string>
+    <string name="user_name">Имя пользователя</string>
+    <string name="password">Пароль</string>
+    <string name="sign_in_button">Войти</string>
+    <string name="logo_dunkin_donuts">Logo Dunkin Donuts</string>
 </resources>
