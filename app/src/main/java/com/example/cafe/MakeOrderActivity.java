@@ -33,16 +33,19 @@ public class MakeOrderActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_make_order);
         initViews();
-
-        String userName = getIntent().getStringExtra(EXTRA_USER_NAME);
-        String greetings = getString(R.string.greetings, userName);
-        textViewGreetings.setText(greetings);
+        setupUserName();
     }
 
     public static Intent newIntent(Context context, String userName) {
         Intent intent = new Intent(context, MakeOrderActivity.class);
         intent.putExtra(EXTRA_USER_NAME, userName);
         return intent;
+    }
+
+    private void setupUserName() {
+        String userName = getIntent().getStringExtra(EXTRA_USER_NAME);
+        String greetings = getString(R.string.greetings, userName);
+        textViewGreetings.setText(greetings);
     }
 
     private void initViews() {
