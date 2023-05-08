@@ -13,6 +13,8 @@ import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 public class MakeOrderActivity extends AppCompatActivity {
 
     private static final String EXTRA_USER_NAME = "userName";
@@ -28,6 +30,7 @@ public class MakeOrderActivity extends AppCompatActivity {
     private Spinner spinnerCoffee;
     private Spinner spinnerTea;
     private Button buttonMakeOrder;
+    private String userName;
 
     private String drink;
 
@@ -48,6 +51,26 @@ public class MakeOrderActivity extends AppCompatActivity {
             }
         });
         radioButtonTea.setChecked(true);
+
+        buttonMakeOrder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onUserMadeOrder();
+            }
+        });
+    }
+
+    private void onUserMadeOrder() {
+        ArrayList<String> additives = new ArrayList<>();
+        if (checkBoxSugar.isChecked()) {
+            additives.add(checkBoxSugar.getText().toString());
+        }
+        if (checkBoxMilk.isChecked()) {
+            additives.add(checkBoxMilk.getText().toString());
+        }
+        if (radioButtonTea.isChecked() && checkBoxLemon.isChecked()) {
+            additives.add(checkBoxLemon.getText().toString());
+        }
     }
 
     private void onUserChooseTea() {
@@ -74,7 +97,7 @@ public class MakeOrderActivity extends AppCompatActivity {
     }
 
     private void setupUserName() {
-        String userName = getIntent().getStringExtra(EXTRA_USER_NAME);
+        userName = getIntent().getStringExtra(EXTRA_USER_NAME);
         String greetings = getString(R.string.greetings, userName);
         textViewGreetings.setText(greetings);
     }
