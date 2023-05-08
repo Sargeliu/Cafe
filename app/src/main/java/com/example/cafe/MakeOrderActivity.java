@@ -79,7 +79,12 @@ public class MakeOrderActivity extends AppCompatActivity {
             drinkType = spinnerCoffee.getSelectedItem().toString();
         }
 
-        drinkType.isEmpty();
+        Intent intent = OrderDetailActivity.newIntent(this,
+                userName,
+                drink,
+                additives.toString() ,
+                drinkType);
+        startActivity(intent);
     }
 
     private void onUserChooseTea() {
