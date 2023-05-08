@@ -35,7 +35,9 @@ public class MakeOrderActivity extends AppCompatActivity {
         initViews();
 
         String userName = getIntent().getStringExtra(EXTRA_USER_NAME);
-        textViewGreetings.setText(userName);
+        String greetings = getString(R.string.greetings);
+        String result = String.format(greetings, userName);
+        textViewGreetings.setText(result);
     }
 
     public static Intent newIntent(Context context, String userName) {
