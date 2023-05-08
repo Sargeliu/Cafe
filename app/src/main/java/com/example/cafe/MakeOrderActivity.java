@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.RadioButton;
@@ -28,12 +29,42 @@ public class MakeOrderActivity extends AppCompatActivity {
     private Spinner spinnerTea;
     private Button buttonMakeOrder;
 
+    private String drink;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_make_order);
         initViews();
         setupUserName();
+        radioGroupDrinks.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if (checkedId == radioButtonTea.getId()) {
+                    onUserChooseTea();
+                } else if (checkedId == radioButtonCoffee.getId()) {
+                    onUserChooseCoffee();
+                }
+            }
+        });
+        radioButtonTea.setChecked(true);
+    }
+
+    private void onUserChooseTea() {
+        drink = getString(R.string.tea);
+        String additivesLabel = getString(R.string.additives, drink);
+        textViewAdditives.setText(additivesLabel);
+        checkBoxLemon.setVisibility(View.VISIBLE);
+        spinnerTea.setVisibility(View.VISIBLE);
+        spinnerCoffee.setVisibility(View.INVISIBLE);
+    }
+    private void onUserChooseCoffee() {
+        drink = getString(R.string.coffee);
+        String additivesLabel = getString(R.string.additives, drink);
+        textViewAdditives.setText(additivesLabel);
+        checkBoxLemon.setVisibility(View.INVISIBLE);
+        spinnerTea.setVisibility(View.INVISIBLE);
+        spinnerCoffee.setVisibility(View.VISIBLE);
     }
 
     public static Intent newIntent(Context context, String userName) {

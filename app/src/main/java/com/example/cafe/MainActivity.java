@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String userName = editTextName.getText().toString().trim();
-                String userPassword = editTextPassword.getText().toString().trim(); //trim
+                String userPassword = editTextPassword.getText().toString().trim();
 
 
                 if (userName.isEmpty() || userPassword.isEmpty()) {
