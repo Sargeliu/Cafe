@@ -71,6 +71,15 @@ public class MakeOrderActivity extends AppCompatActivity {
         if (radioButtonTea.isChecked() && checkBoxLemon.isChecked()) {
             additives.add(checkBoxLemon.getText().toString());
         }
+
+        String drinkType = "";
+        if (radioButtonTea.isChecked()) {
+            drinkType = spinnerTea.getSelectedItem().toString();
+        } else if (radioButtonCoffee.isChecked()) {
+            drinkType = spinnerCoffee.getSelectedItem().toString();
+        }
+
+        drinkType.isEmpty();
     }
 
     private void onUserChooseTea() {
